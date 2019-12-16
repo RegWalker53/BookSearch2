@@ -1,0 +1,22 @@
+{
+  "name": "booksearch-cli",
+  "version": "1.0.0",
+  "description": "Google Book Search node cli application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Reg Walker",
+  "license": "ISC",
+  "bin": {
+    "bookSearch": "bin/bookSearch"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cliff": "^0.1.10",
+    "dotenv": "^8.2.0",
+    "line-by-line": "^0.1.6",
+    "minimist": "^1.2.0",
+    "ora": "^4.0.3",
+    "prompt-sync": "^4.1.7"
+  }
+}
