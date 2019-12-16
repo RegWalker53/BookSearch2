@@ -15,7 +15,6 @@ module.exports = () => {
     
    const bookListPath = process.env.BOOK_LIST_PATH || ".";
 
-
     bookListItems = [];
 
     let lr = new LineByLineReader(`${bookListPath}/myList.json`);
@@ -28,7 +27,6 @@ module.exports = () => {
 
     lr.on('line', function (line) {
         var jsonLine = JSON.parse(line);
-        console.log(jsonLine);
         bookListItems.push(jsonLine);
     });
 
