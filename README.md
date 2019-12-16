@@ -5,7 +5,7 @@ The search results are displayed as a report showing the book's authors, title a
 
 ## Common Usage
 
-bookSearch airplanes      // Creates a display 5 books about 'airplanes'
+bookSearch airplanes      // Creates a display 5 books about 'airplanes' 
 bookSearch -l             // Lists all the books saved to myList.json   
 
 ## Installing
