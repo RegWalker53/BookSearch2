@@ -31,7 +31,7 @@ module.exports = (displayedBookListItems) => {
         
         entryNumber = Number(userEntry);
 
-        if (entryNumber => 0 && entryNumber <= modifiedListItems.length) {
+        if (entryNumber >= 0 && (entryNumber <= modifiedListItems.length -1)) {
             saveToBooksList(modifiedListItems[entryNumber]);
 
             removedItem = modifiedListItems.splice(entryNumber,1);
