@@ -10,13 +10,24 @@ const bookListPath = process.env.BOOK_LIST_PATH || '.';
  
 var jsonContent = JSON.stringify(bookListItem) + '\r\n';
 
+try {
+    fs.appendFileSync(`${bookListPath}/myList.json`, jsonContent, 'utf8');
+    console.log(`The book has been saved.
+    `);
+} catch (err) {
+    console.log("An error occured while writing JSON Object to File.");
+    return console.log(err);
+}
+
+/*
 fs.appendFile(`${bookListPath}/myList.json`, jsonContent, 'utf8', function (err) {
     if (err) {
         console.log("An error occured while writing JSON Object to File.");
         return console.log(err);
-    } else {
+    };
  
         console.log("The book has been saved.");
-    }
+
 });
+*/
 }
