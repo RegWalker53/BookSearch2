@@ -8,7 +8,7 @@ module.exports = (bookListItem) => {
 
 const bookListPath = process.env.BOOK_LIST_PATH || '.';
  
-var jsonContent = JSON.stringify(bookListItem) + '\r\n';
+const jsonContent = JSON.stringify(bookListItem) + '\r\n';
 
 try {
     fs.appendFileSync(`${bookListPath}/myList.json`, jsonContent, 'utf8');

@@ -6,35 +6,31 @@
  choice handling and user confusion.
 */
 
-var prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 const formatAndDisplay = require('../utils/displayFormatter');
 const saveToBooksList = require('../utils/saveBook'); 
 
 module.exports = (displayedBookListItems) => {
 
-    let modifiedListItems = displayedBookListItems.slice(0);
-    let userChoice = "";
-    let entryNumber = 0;
-    let userEntry = '';
-    let removedItem = [];
+    const modifiedListItems = displayedBookListItems.slice(0);
 
     while (modifiedListItems.length > 0 ) {
 
-        userChoice = prompt(
+        const userChoice = prompt(
             'Enter Yes, if you want save a displayed item to your list: ');
    
         if( userChoice.toUpperCase() != "YES") {
             break;
         };
 
-        userEntry = prompt(`Enter the ID number of the entry you want to save: `);
+        const userEntry = prompt(`Enter the ID number of the entry you want to save: `);
         
-        entryNumber = Number(userEntry);
+        const entryNumber = Number(userEntry);
 
         if (entryNumber >= 0 && (entryNumber <= modifiedListItems.length -1)) {
             saveToBooksList(modifiedListItems[entryNumber]);
 
-            removedItem = modifiedListItems.splice(entryNumber,1);
+            const removedItem = modifiedListItems.splice(entryNumber,1);
             
             formatAndDisplay(modifiedListItems);
         } else {

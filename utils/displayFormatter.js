@@ -7,7 +7,7 @@ const cliff = require('cliff');
 
 module.exports = (bookListItems) => {
       
-let displayLines = [];
+const displayLines = [];
 
 for( let item = 0; item < bookListItems.length; item++) {
 

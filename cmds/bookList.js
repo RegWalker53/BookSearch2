@@ -13,24 +13,25 @@ const formatAndDisplay = require('../utils/displayFormatter');
 
 module.exports = () => {
     
-   const bookListPath = process.env.BOOK_LIST_PATH || ".";
+    let jsonLine  = "";
+    const bookListPath = process.env.BOOK_LIST_PATH || ".";
 
-    bookListItems = [];
+    const bookListItems = [];
 
-    let lr = new LineByLineReader(`${bookListPath}/myList.json`);
+    const lineRead = new LineByLineReader(`${bookListPath}/myList.json`);
 
-    lr.on('error', function (err) {
+    lineRead.on('error', function (err) {
         console.log(`Error returned while accessing book list
          ${err}`);
     });
     
 
-    lr.on('line', function (line) {
-        var jsonLine = JSON.parse(line);
+    lineRead.on('line', function (line) {
+        jsonLine = JSON.parse(line);
         bookListItems.push(jsonLine);
     });
 
-    lr.on('end', function () {
+    lineRead.on('end', function () {
         // All lines s/b read, file is closed now. Display the list.
         if (bookListItems.length > 0) {
             formatAndDisplay(bookListItems);

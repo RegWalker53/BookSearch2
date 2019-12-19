@@ -6,10 +6,9 @@
 
 const getBooks = require('../utils/getBooks');
 const displayBooks = require('../utils/displayBooks');
+const saveOrExit = require('../utils/saveOrExit');
 
 module.exports = async (args) => {
-
-  let myBooks = '';
 
   try {
     const userQuery = args._[0];
@@ -19,6 +18,12 @@ module.exports = async (args) => {
     console.error(`An error occured during your search
     ${err}`);
   };
-  //  Display the results & allow user to save items to a reading list
-  displayBooks(myBooks);
+ 
+   const bookListItems = displayBooks(myBooks);
+
+/*  Offer the user the choice between exiting or saving an item until
+    they choose to exit or exhaust the displayed items, either of which 
+    terminates the command.
+*/
+  saveOrExit(bookListItems);
 };
