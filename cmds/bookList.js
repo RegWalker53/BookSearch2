@@ -9,7 +9,7 @@
 const dotenv = require('dotenv');
 const LineByLineReader = require('line-by-line');
 
-const formatAndDisplay = require('../utils/displayFormatter');
+const bookUtils = require('../utils/bookUtils');
 
 module.exports = () => {
     
@@ -34,7 +34,7 @@ module.exports = () => {
     lineRead.on('end', function () {
         // All lines s/b read, file is closed now. Display the list.
         if (bookListItems.length > 0) {
-            formatAndDisplay(bookListItems);
+            bookUtils.formatAndDisplay(bookListItems);
         } else{
             console.log("Your saved book file is empty");
         }
