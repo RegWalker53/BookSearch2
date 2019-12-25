@@ -19,7 +19,7 @@ const bookUtils = {
         bookListItems.forEach( (listItem, index) => {
             displayLines.push({
                 ID: index.toString(),
-                Author: listItem.author,
+                Author: listItem.authors,
                 Title: listItem.title,
                 Publisher: listItem.publisher
             });
@@ -39,7 +39,7 @@ const bookUtils = {
         for (i = 0; i < searchDisplayLimit; i++) {
     
             searchResultsExtract.push( {
-                author: books[i].volumeInfo.authors,
+                authors: books[i].volumeInfo.authors,
                 title:  books[i].volumeInfo.title,
                 publisher: books[i].volumeInfo.publisher
             });
@@ -70,6 +70,7 @@ const bookUtils = {
         try {
             fs.appendFileSync(`${bookListPath}/myList.json`, jsonContent, 'utf8');
             console.log(`The book has been saved.
+            
             `);
         } catch (err) {
             console.log(`An error occured while writing JSON Object to File
