@@ -37,7 +37,4 @@ module.exports = () => {
     default:
       help();
   };
-
-
- // process.exit();
 };

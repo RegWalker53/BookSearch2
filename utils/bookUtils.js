@@ -72,10 +72,12 @@ const bookUtils = {
             console.log(`The book has been saved.
             
             `);
+            return true;
         } catch (err) {
             console.log(`An error occured while writing JSON Object to File
                 ${err}
             `);
+            return false;
         }
     },
 
@@ -97,11 +99,13 @@ const bookUtils = {
             const entryNumber = Number(userEntry);
     
             if (entryNumber >= 0 && (entryNumber <= modifiedListItems.length -1)) {
-                this.saveToBooksList(modifiedListItems[entryNumber]);
-    
-                const removedItem = modifiedListItems.splice(entryNumber,1);
-                
-                this.formatAndDisplay(modifiedListItems);
+                const saveResult = 
+                        this.saveToBooksList(modifiedListItems[entryNumber]);
+
+                if (saveResult) {
+                    const removedItem = modifiedListItems.splice(entryNumber,1);
+                    formatAndDisplay(modifiedListItems);
+                }
             } else {
                 console.log(`The number entered is invalid ${entryNumber}`)
             };

@@ -3,7 +3,7 @@
     terminal. The file is read synchronously as befits a command. Read code is
     from NPM documentation.
 
-    Execution of the command stops after the display.
+    Execution of the command stops after the display is output.
 */
 
 const dotenv = require('dotenv');
@@ -24,7 +24,6 @@ module.exports = () => {
         console.log(`Error returned while accessing book list
          ${err}`);
     });
-    
 
     lineRead.on('line', function (line) {
         jsonLine = JSON.parse(line);

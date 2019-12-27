@@ -41,45 +41,60 @@ const searchResults =  [
     publisher:"Xmas Press"}}
     ]
 
-// First test that all refactored methods are present on bookUtils
+// ---- Verify that all refactored methods are present on bookUtils
 
 test('buildResultsExtract function exists', () =>{
-    expect(bookUtils.buildResultsExtract).toBeDefined();
+    expect(typeof bookUtils.buildResultsExtract).toEqual('function');
 });
 
 test('formatAndDisplay function exists', () =>{
-    expect(bookUtils.formatAndDisplay).toBeDefined();
+    expect(typeof bookUtils.formatAndDisplay).toEqual('function');
 });
 
 test('getBooks function exists', () =>{
-    expect(bookUtils.getBooks).toBeDefined();
+    expect(typeof bookUtils.getBooks).toEqual('function');
 });
 
 test('saveToBooksList function exists', () =>{
-    expect(bookUtils.saveToBooksList).toBeDefined();
+    expect(typeof bookUtils.saveToBooksList).toEqual('function');
 });
 
 test('saveOrExit function exists', () =>{
-    expect(bookUtils.saveOrExit).toBeDefined();
+    expect(typeof bookUtils.saveOrExit).toEqual('function');
 });
 
-// Verify that getbook is getting an object with book data
-test('getBook is return book data', async () => {
+// ---- Test for buildResultsExtract
+
+test('Only 5 iems are extracted', () => {
+    const extract = bookUtils.buildResultsExtract(searchResults);
+    expect(extract).toHaveLength(5);
+});
+
+test('Extract item matches corroesponding entry in BookItem array', () => {
+    const extract = bookUtils.buildResultsExtract(searchResults);
+    expect(extract[3]).toEqual(bookItems[3]);
+});
+
+// ---- Tests for formatAndDisplay
+
+
+// ---- Test for getbooks
+
+test('getBook is returning valid book data', async () => {
     const query = 'cats';
     expect.assertions(1);
     const data = await bookUtils.getBooks(query);
     expect(data[1].kind).toEqual('books#volume');
 });
 
-test('verify that only 5 iems are extracted', () => {
-    const extract = bookUtils.buildResultsExtract(searchResults);
-    expect(extract).toHaveLength(5);
+// ---- Tests for saveToBooksList
+test('Saving a book is successful', () => {
+    expect(bookUtils.saveToBooksList(bookItems[0])).toBeTruthy();
 });
 
-test('Test contents of extract matches save array', () => {
-    const extract = bookUtils.buildResultsExtract(searchResults);
-    expect(extract[3]).toEqual(bookItems[3]);
-});
+// ---- Tests for saveOrExit
+
+
 /*
 
 test('Verifying formatAndDisplay matches snapshot', () => {

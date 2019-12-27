@@ -12,16 +12,23 @@ const bookUtils = require('../utils/bookUtils');
 
 module.exports = async (args) => {
   let myBooks;
+  const userQuery = args._[0];
 
   try {
-    const userQuery = args._[0];
     myBooks = await bookUtils.getBooks(userQuery);
     
   } catch (err) {
     console.error(`An error occured during your search
     ${err}`);
+    return false;
   };
  
+  if (typeof myBooks === 'undefined'){
+    console.log(`Nothing in GoogleBooks matched your query:
+      ${userQuery}`);
+    return false;
+  };
+
    const searchResultsExtract = bookUtils.buildResultsExtract(myBooks);
 
    bookUtils.formatAndDisplay(searchResultsExtract);
