@@ -7,7 +7,7 @@
 
 const minimist = require('minimist');
 
-const searchForBooks = require('./cmds/searchForBooks');
+const bookSearch = require('./cmds/bookSearch');
 const bookList = require('./cmds/bookList');
 const help =  require('./cmds/help');
 
@@ -27,7 +27,7 @@ module.exports = () => {
 
   switch (cmd) {
     case 'bookSearch':
-      searchForBooks(args);
+      bookSearch(args);
       break;
 
     case 'list':
