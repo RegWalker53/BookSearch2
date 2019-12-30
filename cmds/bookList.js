@@ -23,6 +23,7 @@ module.exports = () => {
     lineRead.on('error', function (err) {
         console.log(`Error returned while accessing book list
          ${err}`);
+        return true; //this denotes a errorsystem, not functional
     });
 
     lineRead.on('line', function (line) {
@@ -36,8 +37,11 @@ module.exports = () => {
             bookUtils.formatAndDisplay(bookListItems);
         } else{
             console.log("Your saved book file is empty");
-        }
+        };
+        return true;
     });
+
+
 };
 
 

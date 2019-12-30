@@ -1,7 +1,6 @@
 const bookUtils = require('../utils/bookUtils');
 
-
-describe('Verify refactored methods are present on bookUtils', () => {
+describe('Tests supporting refactoring', () => {
 
     test('buildResultsExtract function exists', () =>{
         expect(typeof bookUtils.buildResultsExtract).toEqual('function');
@@ -24,26 +23,28 @@ describe('Verify refactored methods are present on bookUtils', () => {
     });
 });
 
-describe('Tests for buildResultsExtract', ()=> {
+// shared static test data
 
-//bookItems - an array mimicing the output the buildResultsExtract function 
-const bookItems = [
-    { authors: ["M. H. Clark"],
-     title: "When You Love a Cat",
-     publisher:"Compendium Publishing & Communications"},
-    { authors: ["Pam Johnson-Bennett"],
-     title: "Think Like a Cat",
-     publisher:"Penguin"},
-    { authors: ["Alan Dundes","Carl R. Pagter"],
-     title:"When You're Up to Your Ass in Alligators",
-     publisher:"Wayne State University Press"},
-    { authors: ["Anonymous"],
-    title: "Lucy in the Sky", 
-    publisher:"Simon and Schuster"},
-    { authors: ["Mark Winheld"],
-    title: "Open the Sky",
-    publisher:"Xulon Press"}
+    //bookItems - an array mimicing the output the buildResultsExtract function 
+    const bookItems = [
+        { authors: ["M. H. Clark"],
+        title: "When You Love a Cat",
+        publisher:"Compendium Publishing & Communications"},
+        { authors: ["Pam Johnson-Bennett"],
+        title: "Think Like a Cat",
+        publisher:"Penguin"},
+        { authors: ["Alan Dundes","Carl R. Pagter"],
+        title:"When You're Up to Your Ass in Alligators",
+        publisher:"Wayne State University Press"},
+        { authors: ["Anonymous"],
+        title: "Lucy in the Sky", 
+        publisher:"Simon and Schuster"},
+        { authors: ["Mark Winheld"],
+        title: "Open the Sky",
+        publisher:"Xulon Press"}
     ];
+    
+describe('Tests for buildResultsExtract', ()=> {
     
     // searchResults mimics the object output by getBooks
     const searchResults =  [
@@ -65,7 +66,7 @@ const bookItems = [
         {volumeInfo:{ authors: ["Reg Walker"],
         title: "Failed extraction",
         publisher:"Xmas Press"}}
-        ];
+    ];
 
     const extract = bookUtils.buildResultsExtract(searchResults);
 
@@ -78,53 +79,34 @@ const bookItems = [
     });
 });
 
-// ---- Tests for formatAndDisplay
+describe('Test FormatAndDisplay', () => {
 
+    test('function returns truthy, denoting success', () => {
+        const returnStatus = bookUtils.formatAndDisplay(bookItems);
+        expect(returnStatus).toBeTruthy;
+    })
+
+    test('formatting matches expectations', () => {
+        const displayData = bookUtils.formatAndDisplay(bookItems);
+        expect(displayData).toMatchSnapshot();
+    });
+});
 
 describe('Test getbooks', () => {
 
     test('getBook is returning valid book data', async () => {
-        const query = 'cats';
+
+        const query = 'rats';
         expect.assertions(1);
         const data = await bookUtils.getBooks(query);
         expect(data[1].kind).toEqual('books#volume');
     });
 });
 
-// ---- Tests for saveToBooksList
-describe('', () => {
+describe('Tests for saveToBooksList function', () => {
     
-    //bookItems - an array mimicing the output the buildResultsExtract function 
-    const bookItems = [
-        { authors: ["M. H. Clark"],
-        title: "When You Love a Cat",
-        publisher:"Compendium Publishing & Communications"},
-        { authors: ["Pam Johnson-Bennett"],
-        title: "Think Like a Cat",
-        publisher:"Penguin"},
-        { authors: ["Alan Dundes","Carl R. Pagter"],
-        title:"When You're Up to Your Ass in Alligators",
-        publisher:"Wayne State University Press"},
-        { authors: ["Anonymous"],
-        title: "Lucy in the Sky", 
-        publisher:"Simon and Schuster"},
-        { authors: ["Mark Winheld"],
-        title: "Open the Sky",
-        publisher:"Xulon Press"}
-        ];
-
     test('Saving a book is successful', () => {
         expect(bookUtils.saveToBooksList(bookItems[0])).toBeTruthy();
     });
 });
-
-// ---- Tests for saveOrExit
-
-
-/*
-
-test('Verifying formatAndDisplay matches snapshot', () => {
-    const extractedData = []
-});
-*/
 

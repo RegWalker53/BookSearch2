@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "line-by-line": "^0.1.6",
     "minimist": "^1.2.0",
+    "mock-stdin": "^1.0.0",
     "ora": "^4.0.3",
     "prompt-sync": "^4.1.7"
   },

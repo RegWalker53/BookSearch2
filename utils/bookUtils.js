@@ -24,10 +24,12 @@ const bookUtils = {
                 Publisher: listItem.publisher
             });
         });
-            
-        console.log(cliff.stringifyObjectRows(displayLines, ['ID', 'Author', 'Title', 'Publisher'], 
+        
+        return console.log(cliff.stringifyObjectRows(displayLines, 
+            ['ID', 'Author', 'Title', 'Publisher'], 
             ['red', 'green', 'green', 'green']));
-        },
+        
+    },
 
     buildResultsExtract: function(books)  {
 
@@ -107,13 +109,10 @@ const bookUtils = {
                     formatAndDisplay(modifiedListItems);
                 }
             } else {
-                console.log(`The number entered is invalid ${entryNumber}`)
+                console.log(`The number entered is invalid ${entryNumber}`);
             };
-    
         };
-      
     }
-
 };
 
 

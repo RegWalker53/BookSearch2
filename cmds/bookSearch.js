@@ -20,22 +20,23 @@ module.exports = async (args) => {
   } catch (err) {
     console.error(`An error occured during your search
     ${err}`);
-    return false;
   };
  
   if (typeof myBooks === 'undefined'){
     console.log(`Nothing in GoogleBooks matched your query:
       ${userQuery}`);
-    return false;
+  } else {
+
+    const searchResultsExtract = bookUtils.buildResultsExtract(myBooks);
+
+    bookUtils.formatAndDisplay(searchResultsExtract);
+
+  /*  Offer the user the choice between exiting or saving an item until
+      they choose to exit or exhaust the displayed items, either of which 
+      terminates the command.
+  */
+    bookUtils.saveOrExit(searchResultsExtract);
   };
 
-   const searchResultsExtract = bookUtils.buildResultsExtract(myBooks);
-
-   bookUtils.formatAndDisplay(searchResultsExtract);
-
-/*  Offer the user the choice between exiting or saving an item until
-    they choose to exit or exhaust the displayed items, either of which 
-    terminates the command.
-*/
-  bookUtils.saveOrExit(searchResultsExtract);
+  return true; // bad queries do not denote code failure.
 };

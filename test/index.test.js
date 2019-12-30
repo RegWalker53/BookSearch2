@@ -21,3 +21,25 @@ describe('Verify that all commands exist', () => {
         expect(typeof help).toEqual('function');
     });
 });
+
+describe('UI test cases', () => {
+
+    test('bookSearch w/o -l or search string runs help command', () => {
+        // index();       
+
+    });
+
+    test('bookSearch with -l runs the list command', () => {
+        // index();
+ 
+    });
+
+    test('bookSearch with search string runs the bookSearch command', () => {
+       //index();
+
+    });
+
+    test('bookSearch with search string and -l runs help command', () => {
+        // index();
+    });
+});
