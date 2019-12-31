@@ -9,7 +9,7 @@
 const dotenv = require('dotenv');
 const LineByLineReader = require('line-by-line');
 
-const bookUtils = require('../utils/bookUtils');
+const bookUtils2 = require('../utils/bookUtils2');
 
 module.exports = () => {
     
@@ -20,28 +20,28 @@ module.exports = () => {
 
     const lineRead = new LineByLineReader(`${bookListPath}/myList.json`);
 
-    lineRead.on('error', function (err) {
+    lineRead.on('error', (err) => {
         console.log(`Error returned while accessing book list
          ${err}`);
-        return true; //this denotes a errorsystem, not functional
+        return true; //this denotes a system error, not a functional one
     });
 
-    lineRead.on('line', function (line) {
+    lineRead.on('line', (line) => {
         jsonLine = JSON.parse(line);
         bookListItems.push(jsonLine);
     });
 
-    lineRead.on('end', function () {
+    lineRead.on('end', () => {
         // All lines s/b read, file is closed now. Display the list.
         if (bookListItems.length > 0) {
-            bookUtils.formatAndDisplay(bookListItems);
+            bookUtils2.formatAndDisplay(bookListItems);
         } else{
             console.log("Your saved book file is empty");
         };
-        return true;
+    
     });
 
-
+    return true;
 };
 
 

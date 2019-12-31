@@ -1,3 +1,17 @@
+// The commands are stubbed since they aren't what is being tested
+
+jest.mock('../cmds/bookList', () => {
+    return jest.fn(() => true );
+});
+
+jest.mock('../cmds/bookSearch', () => {
+    return jest.fn(() => true );
+});
+
+jest.mock('../cmds/help', () => {
+    return jest.fn(() => true );
+});
+
 const commandProcessor = require('../commandProcessor');
 const bookList = require('../cmds/bookList');
 const bookSearch = require('../cmds/bookSearch');

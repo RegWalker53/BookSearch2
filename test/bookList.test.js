@@ -1,8 +1,9 @@
+jest.mock('../utils/bookUtils2', () =>({
+    formatAndDisplay: jest.fn(() => true)
+}));
+
 const bookList = require('../cmds/bookList');
-const bookUtils = require('../utils/bookUtils');
-
-// test that the saved books are displayed
-
+const bookUtils2 = require('../utils/bookUtils2');
 
 describe('Tests supporting refactoring', () => {
 
@@ -10,8 +11,8 @@ describe('Tests supporting refactoring', () => {
         expect(bookList).toBeDefined();
     });
 
-    test('bookUtils function exists', () =>{
-        expect(typeof bookUtils).toEqual('object');
+    test('bookUtils2 object exists', () =>{
+        expect(typeof bookUtils2).toEqual('object');
     });
 
 });

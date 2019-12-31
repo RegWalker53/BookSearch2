@@ -1,4 +1,6 @@
 const bookUtils = require('../utils/bookUtils');
+const bookUtils2 = require('../utils/bookUtils2');
+
 
 describe('Tests supporting refactoring', () => {
 
@@ -7,7 +9,7 @@ describe('Tests supporting refactoring', () => {
     });
 
     test('formatAndDisplay function exists', () =>{
-        expect(typeof bookUtils.formatAndDisplay).toEqual('function');
+        expect(typeof bookUtils2.formatAndDisplay).toEqual('function');
     });
 
     test('getBooks function exists', () =>{
@@ -15,11 +17,11 @@ describe('Tests supporting refactoring', () => {
     });
 
     test('saveToBooksList function exists', () =>{
-        expect(typeof bookUtils.saveToBooksList).toEqual('function');
+        expect(typeof bookUtils2.saveToBooksList).toEqual('function');
     });
 
     test('saveOrExit function exists', () =>{
-        expect(typeof bookUtils.saveOrExit).toEqual('function');
+        expect(typeof bookUtils2.saveOrExit).toEqual('function');
     });
 });
 
@@ -82,12 +84,12 @@ describe('Tests for buildResultsExtract', ()=> {
 describe('Test FormatAndDisplay', () => {
 
     test('function returns truthy, denoting success', () => {
-        const returnStatus = bookUtils.formatAndDisplay(bookItems);
+        const returnStatus = bookUtils2.formatAndDisplay(bookItems);
         expect(returnStatus).toBeTruthy;
     })
 
     test('formatting matches expectations', () => {
-        const displayData = bookUtils.formatAndDisplay(bookItems);
+        const displayData = bookUtils2.formatAndDisplay(bookItems);
         expect(displayData).toMatchSnapshot();
     });
 });
@@ -106,7 +108,7 @@ describe('Test getbooks', () => {
 describe('Tests for saveToBooksList function', () => {
     
     test('Saving a book is successful', () => {
-        expect(bookUtils.saveToBooksList(bookItems[0])).toBeTruthy();
+        expect(bookUtils2.saveToBooksList(bookItems[0])).toBeTruthy();
     });
 });
 

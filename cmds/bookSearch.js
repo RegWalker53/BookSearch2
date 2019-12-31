@@ -9,6 +9,8 @@
 */
 
 const bookUtils = require('../utils/bookUtils');
+const bookUtils2 = require('../utils/bookUtils2');
+
 
 module.exports = async (args) => {
   let myBooks;
@@ -29,13 +31,13 @@ module.exports = async (args) => {
 
     const searchResultsExtract = bookUtils.buildResultsExtract(myBooks);
 
-    bookUtils.formatAndDisplay(searchResultsExtract);
+    bookUtils2.formatAndDisplay(searchResultsExtract);
 
   /*  Offer the user the choice between exiting or saving an item until
       they choose to exit or exhaust the displayed items, either of which 
       terminates the command.
   */
-    bookUtils.saveOrExit(searchResultsExtract);
+    bookUtils2.saveOrExit(searchResultsExtract);
   };
 
   return true; // bad queries do not denote code failure.
