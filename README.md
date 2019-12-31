@@ -18,6 +18,12 @@ npm install
 
 You also need to 'publish' the command, see below for details.
 
+### Testing
+
+cd BookSearch2
+npm test
+
+No setup is necessary to run tests.
 
 ### Initial Configuration
 
